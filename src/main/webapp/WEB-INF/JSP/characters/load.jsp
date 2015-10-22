@@ -11,15 +11,15 @@
 	<v:menu />
 	<h1>Load Character</h1>
 	<form>
-		<label>Name:<span>${fouten.id}</span> <input name='charactername'
-			value='${param.characterName}' required autofocus type='text'></label>
+		<label>Name:<span>${fouten.characterName}</span> <input name='characterName'
+			value='${param.characterName}' required autofocus type='search'></label>
 		<input type='submit' value='Zoeken'>
 	</form>
 	<c:if test='${not empty param and empty fouten and empty character}'>
- Character niet gevonden
+ Character niet gevonden.
  </c:if>
 	<c:if test='${not empty character}'>
- ${character.characterName} ${character.playerName}
+		 ${character.characterName} ${character.playerName}
 	</c:if>
 </body>
 </html>

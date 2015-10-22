@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 
 import be.jef.filters.JPAFilter;
 
-public class ClanDAO {
+public class ClanDAO extends AbstractDAO{
 	public ClanDAO read(long idClan) {
 		EntityManager entityManager = JPAFilter.getEntityManager();
 		try {

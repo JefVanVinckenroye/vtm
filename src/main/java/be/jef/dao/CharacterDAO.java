@@ -1,16 +1,14 @@
 package be.jef.dao;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
-import be.jef.filters.JPAFilter;
-
-public class CharacterDAO {
-	public CharacterDAO read(long idCharacter) {
-		EntityManager entityManager = JPAFilter.getEntityManager();
-		try {
-			return entityManager.find(CharacterDAO.class, idCharacter);
-		} finally {
-			entityManager.close();
-		}
+public class CharacterDAO extends AbstractDAO {
+	public Character read(Long idCharacter) {
+		return getEntityManager().find(Character.class, idCharacter);
+	}
+	
+	public List<Character> findAll() {
+		return getEntityManager().createNamedQuery("Character.findAll",
+				Character.class).getResultList();
 	}
 }

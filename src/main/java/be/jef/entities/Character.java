@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "character")
@@ -30,6 +32,7 @@ public class Character implements Serializable {
 	private long willpower;
 	private static long health = 7;
 	private static long bloodPool;
+	
 
 	public long getIdCharacter() {
 		return idCharacter;
