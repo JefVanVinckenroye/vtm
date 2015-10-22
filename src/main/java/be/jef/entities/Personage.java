@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "character")
-public class Character implements Serializable {
+@Table(name = "personage")
+public class Personage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	private long idCharacter;
-	private String characterName;
+	private long persId;
+	private String persName;
 	private String playerName;
 	private String chronicle;
 	private String nature;
@@ -34,12 +34,12 @@ public class Character implements Serializable {
 	private static long bloodPool;
 	
 
-	public long getIdCharacter() {
-		return idCharacter;
+	public long getPersId() {
+		return persId;
 	}
 
-	public String getCharacterName() {
-		return characterName;
+	public String getPersName() {
+		return persName;
 	}
 
 	public String getPlayerName() {

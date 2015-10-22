@@ -8,7 +8,7 @@
  			java:/comp/env/jdbc/vtm
 		</non-jta-data-source>
 		<class>be.jef.entities.Clan</class>
-		<class>be.jef.entities.Character</class>
+		<class>be.jef.entities.Personage</class>
 		<properties>
 			<property name='hibernate.show_sql' value='true' />
 			<property name='hibernate.format_sql' value='true' />

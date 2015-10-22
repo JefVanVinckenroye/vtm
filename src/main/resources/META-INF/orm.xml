@@ -4,14 +4,14 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
  http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
 	version="2.1">
-	<named-query name= "Character.findAll">
+	<named-query name= "Personage.findAll">
 		<query>
-			select c from Character c order by c.characterName
+			select p from Personage p order by p.persName
 		</query>
 	</named-query>
-	<named-query name="Character.findByCharacterName">
-		<query>select c from Character c
-			where c.characterName = :characterName
+	<named-query name="Personage.findByPersName">
+		<query>select c from Personage c
+			where c.persName = :persName
 		</query>
 	</named-query>	
 </entity-mappings>
