@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Context path='/vtm'>
+	<Resource name='jdbc/vtm' type='javax.sql.DataSource'
+		username='cursist' password='cursist' driverClassName='com.mysql.jdbc.Driver'
+		url='jdbc:mysql://localhost/vtm' closeMethod='close' />
+</Context>
