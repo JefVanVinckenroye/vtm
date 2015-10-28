@@ -9,6 +9,8 @@
 		</non-jta-data-source>
 		<class>be.jef.entities.Clan</class>
 		<class>be.jef.entities.Personage</class>
+		<class>be.jef.entities.AttributeColumns</class>
+		<class>be.jef.entities.PersAttCol</class>
 		<properties>
 			<property name='hibernate.show_sql' value='true' />
 			<property name='hibernate.format_sql' value='true' />

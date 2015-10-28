@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import be.jef.entities.Personage;
+import be.jef.services.AttributeColumnsService;
+import be.jef.services.ClanService;
 import be.jef.services.PersonageService;
 
 
@@ -17,8 +19,9 @@ import be.jef.services.PersonageService;
 public class LoadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/characters/load.jsp";
-	private final PersonageService personageService = new PersonageService();
-
+	private final transient PersonageService personageService = new PersonageService();
+	private final transient ClanService clanService = new ClanService();
+	private final transient AttributeColumnsService attributeColumnsService = new AttributeColumnsService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request,

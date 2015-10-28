@@ -4,14 +4,34 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
  http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
 	version="2.1">
-	<named-query name= "Personage.findAll">
+	<named-query name="Personage.findAll">
 		<query>
 			select p from Personage p order by p.persName
 		</query>
 	</named-query>
 	<named-query name="Personage.findByPersName">
-		<query>select c from Personage c
-			where c.persName = :persName
+		<query>select p from Personage p
+			where p.persName = :persName
 		</query>
-	</named-query>	
+	</named-query>
+	<named-query name="Clan.findAll">
+		<query>
+			select c from Clan c order by c.clanName
+		</query>
+	</named-query>
+	<named-query name="Clan.findByClanName">
+		<query>select c from Clan c
+			where c.clanName = :clanName
+		</query>
+	</named-query>
+	<named-query name="AttributeColumns.findAll">
+		<query>
+			select ac from AttributeColumns ac order by ac.idattributeCol
+		</query>
+	</named-query>
+	<named-query name="AttributeColumns.findByattributeColName">
+		<query>select ac from AttributeColumns ac
+			where ac.attributeColName = :attributeColName
+		</query>
+	</named-query>
 </entity-mappings>

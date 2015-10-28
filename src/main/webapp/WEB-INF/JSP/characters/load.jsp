@@ -12,11 +12,11 @@
 	<h1>Load Character</h1>
 	<nav>
 		<c:forEach var='personage' items='${personages}'>
-			<c:url value='/load.htm' var='loadURL'>
+			<c:url value='/characters/load.htm' var='loadURL'>
 				<c:param name='persId' value="${personage.persId}" />
 			</c:url>
 			<a
-				href="<c:url value='/load.htm?idCharacter=${personage.persId}'/>">${personage.persName}</a>
+				href="<c:url value='/characters/load.htm?persId=${personage.persId}'/>">${personage.persName}</a>
 		</c:forEach>
 	</nav>
 	<c:if test='${not empty personage}'>
@@ -28,14 +28,22 @@
 				<th>Nature</th>
 				<th>Demeanor</th>
 				<th>Concept</th>
+				<th>Clan</th>
+				<th>Primary Attribute</th>
+				<th>Secondary Attribute</th>
+				<th>Tertiary Attribute</th>
 			</tr>
 			<tr>
 				<td>${personage.persName}</td>
-				<td>${character.playerName}</td>
-				<td>${character.chronicle}</td>
-				<td>${character.nature}</td>
-				<td>${character.demeanor}</td>
-				<td>${character.concept }</td>
+				<td>${personage.playerName}</td>
+				<td>${personage.chronicle}</td>
+				<td>${personage.nature}</td>
+				<td>${personage.demeanor}</td>
+				<td>${personage.concept }</td>
+				<td>${personage.clan.clanName}</td>
+				<td>${personage.primaryAttCol.attributeColName }</td>
+				<td>${personage.secondaryAttCol.attributeColName }</td>
+				<td>${personage.tertiaryAttCol.attributeColName }</td>
 			</tr>
 		</table>
 	</c:if>

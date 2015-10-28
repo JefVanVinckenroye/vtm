@@ -5,8 +5,8 @@ import java.util.List;
 import be.jef.entities.Personage;
 
 public class PersonageDAO extends AbstractDAO {
-	public Character read(Long persId) {
-		return getEntityManager().find(Character.class, persId);
+	public Personage read(Long persId) {
+		return getEntityManager().find(Personage.class, persId);
 	}
 	
 	public List<Personage> findAll() {

@@ -1,15 +1,23 @@
 package be.jef.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "personage")
+@Table(name = "personage", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "persName"),
+		@UniqueConstraint(columnNames = "persId") })
 public class Personage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -21,18 +29,15 @@ public class Personage implements Serializable {
 	private String demeanor;
 	private String concept;
 	private String sire;
-	private long clan;
-	private long primaryAttCol;
-	private long secondaryAttCol;
-	private long tertiaryAttCol;
-	private long primaryAbilCol;
-	private long secondaryAbilCol;
-	private long tertiaryAbilCol;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "clan")
+	private Clan clan;
+	@OneToMany(fetch = FetchType.LAZY)
+	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	private long humanity;
 	private long willpower;
 	private static long health = 7;
 	private static long bloodPool;
-	
 
 	public long getPersId() {
 		return persId;
@@ -66,32 +71,8 @@ public class Personage implements Serializable {
 		return sire;
 	}
 
-	public long getClan() {
+	public Clan getClan() {
 		return clan;
-	}
-
-	public long getPrimaryAttCol() {
-		return primaryAttCol;
-	}
-
-	public long getSecondaryAttCol() {
-		return secondaryAttCol;
-	}
-
-	public long getTertiaryAttCol() {
-		return tertiaryAttCol;
-	}
-
-	public long getPrimaryAbilCol() {
-		return primaryAbilCol;
-	}
-
-	public long getSecondaryAbilCol() {
-		return secondaryAbilCol;
-	}
-
-	public long getTertiaryAbilCol() {
-		return tertiaryAbilCol;
 	}
 
 	public long getHumanity() {

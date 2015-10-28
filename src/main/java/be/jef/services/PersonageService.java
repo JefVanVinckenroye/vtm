@@ -8,12 +8,12 @@ import be.jef.entities.Personage;
 public class PersonageService {
 	private final PersonageDAO personageDAO = new PersonageDAO();
 
-	public Character read(long idCharacter) {
-		return personageDAO.read(idCharacter);
+	public Personage read(long persId) {
+		return personageDAO.read(persId);
 	}
-	
-	public List<Personage> findAll() { // voor later in de cursus
-		 return personageDAO.findAll();
-		 } 
+
+	public List<Personage> findAll() {
+		return personageDAO.findAll();
+	}
 
 }

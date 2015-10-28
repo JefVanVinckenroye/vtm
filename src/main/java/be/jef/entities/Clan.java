@@ -7,18 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="clan")
+@Table(name = "clan")
 public class Clan implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id	
+	@Id
 	private long idClan;
 	private String clanName;
+
 	public long getIdClan() {
 		return idClan;
 	}
-	
+
 	public String getClanName() {
 		return clanName;
-	}	
+	}
 
 }

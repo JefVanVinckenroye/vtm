@@ -1,16 +1,17 @@
 package be.jef.dao;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
-import be.jef.filters.JPAFilter;
+import be.jef.entities.Clan;
 
 public class ClanDAO extends AbstractDAO{
-	public ClanDAO read(long idClan) {
-		EntityManager entityManager = JPAFilter.getEntityManager();
-		try {
-			return entityManager.find(ClanDAO.class, idClan);
-		} finally {
-			entityManager.close();
-		}
+		
+	public Clan read(Long idClan) {
+		return getEntityManager().find(Clan.class, idClan);
+	}
+	
+	public List<Clan> findAll() {
+		return getEntityManager().createNamedQuery("Clan.findAll",
+				Clan.class).getResultList();
 	}
 }
