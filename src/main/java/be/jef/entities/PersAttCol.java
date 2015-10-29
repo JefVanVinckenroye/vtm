@@ -13,9 +13,11 @@ import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.Table;
 
+import be.jef.enums.ColValue;
+
 @Entity
 @Table(name = "persattcolumns")
-@NamedEntityGraph(name = "PersAttCol.metPersonageEnAttributen", attributeNodes = {
+@NamedEntityGraph(name = "PersAttCol.metPersonageEnAttributeColumns", attributeNodes = {
 		@NamedAttributeNode("personage"),
 		@NamedAttributeNode("attributeColumns") })
 public class PersAttCol implements Serializable {
@@ -29,14 +31,22 @@ public class PersAttCol implements Serializable {
 	@JoinColumn(name = "persId")
 	private Personage personage;
 	@Enumerated(EnumType.STRING)
-	private String attColValue;
+	private ColValue attColValue;
 
 	public long getPersAttColId() {
 		return persAttColId;
 	}
 
-	public String getAttColValue() {
+	public ColValue getAttColValue() {
 		return attColValue;
+	}
+
+	public AttributeColumns getAttributeColumns() {
+		return attributeColumns;
+	}
+
+	public Personage getPersonage() {
+		return personage;
 	}
 
 }

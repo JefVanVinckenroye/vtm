@@ -39,12 +39,12 @@
 			select pac from PersAttCol pac
 		</query>
 	</named-query>
-	<named-query name="PersAttCol.findPrimaryAttributeColumn">
-		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attColValue = "primary"			
+	<named-query name="PersAttCol.findAttributeColumnForPersonage">
+		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attributeColumns = :attributeColumns			
 		</query>
-	</named-query>	
-	<named-query name="PersAttCol.findAllForPersonageAndAttributeColumns">
-		<query>select pac from PersAttCol pac join fetch pac.personage join fetch pac.attributeColumns			
-		</query>
-	</named-query>	
+	</named-query>
+	<named-query name="Personage.findClan">
+		<query>select p.clan from Personage p</query>
+	</named-query>
+
 </entity-mappings>

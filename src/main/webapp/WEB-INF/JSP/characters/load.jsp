@@ -29,9 +29,9 @@
 				<th>Demeanor</th>
 				<th>Concept</th>
 				<th>Clan</th>
-				<th>Primary Attribute</th>
-				<th>Secondary Attribute</th>
-				<th>Tertiary Attribute</th>
+				<c:forEach var='attributeColumn' items='${attributeColumns}'>
+					<th>${attributeColumn.attributeColName}</th>
+				</c:forEach>
 			</tr>
 			<tr>
 				<td>${personage.persName}</td>
@@ -41,9 +41,9 @@
 				<td>${personage.demeanor}</td>
 				<td>${personage.concept }</td>
 				<td>${personage.clan.clanName}</td>
-				<td>${personage.primaryAttCol.attributeColName }</td>
-				<td>${personage.secondaryAttCol.attributeColName }</td>
-				<td>${personage.tertiaryAttCol.attributeColName }</td>
+				<c:forEach var='persAttCol' items='${persAttCols}'>
+				<td>${persAttCol.attColValue}</td>
+				</c:forEach>				
 			</tr>
 		</table>
 	</c:if>

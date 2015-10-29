@@ -16,8 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "personage")
-@NamedEntityGraphs({
-	@NamedEntityGraph(name ="Personage.metClan", attributeNodes = @NamedAttributeNode("clan"))})
+@NamedEntityGraphs({ @NamedEntityGraph(name = "Personage.metClan", attributeNodes = @NamedAttributeNode("clan")) })
 public class Personage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -32,7 +31,7 @@ public class Personage implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "clan")
 	private Clan clan;
-	@OneToMany(mappedBy = "personage")	
+	@OneToMany(mappedBy = "personage")
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	private long humanity;
 	private long willpower;
@@ -89,6 +88,10 @@ public class Personage implements Serializable {
 
 	public static long getBloodPool() {
 		return bloodPool;
+	}
+
+	public Set<PersAttCol> getPersAttCols() {
+		return persAttCols;
 	}
 
 }
