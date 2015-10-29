@@ -2,6 +2,8 @@ package be.jef.dao;
 
 import java.util.List;
 
+import be.jef.entities.PersAttCol;
+
 public class PersAttColDAO extends AbstractDAO {
 
 	public PersAttCol read(Long persAttColId) {

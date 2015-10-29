@@ -1,4 +1,4 @@
-package be.jef.dao;
+package be.jef.entities;
 
 import java.io.Serializable;
 
@@ -12,9 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.Table;
-
-import be.jef.entities.AttributeColumns;
-import be.jef.entities.Personage;
 
 @Entity
 @Table(name = "persattcolumns")

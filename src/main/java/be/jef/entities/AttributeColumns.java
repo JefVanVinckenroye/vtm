@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import be.jef.dao.PersAttCol;
-
 @Entity
 @Table(name = "attributecolumns")
 public class AttributeColumns implements Serializable {

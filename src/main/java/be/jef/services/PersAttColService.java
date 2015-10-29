@@ -2,8 +2,8 @@ package be.jef.services;
 
 import java.util.List;
 
-import be.jef.dao.PersAttCol;
 import be.jef.dao.PersAttColDAO;
+import be.jef.entities.PersAttCol;
 
 public class PersAttColService {
 	private final PersAttColDAO persAttColDAO = new PersAttColDAO();

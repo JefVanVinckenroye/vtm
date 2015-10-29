@@ -14,8 +14,6 @@ import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import be.jef.dao.PersAttCol;
-
 @Entity
 @Table(name = "personage")
 @NamedEntityGraphs({
