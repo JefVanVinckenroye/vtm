@@ -34,4 +34,17 @@
 			where ac.attributeColName = :attributeColName
 		</query>
 	</named-query>
+	<named-query name="PersAttCol.findAll">
+		<query>
+			select pac from PersAttCol pac
+		</query>
+	</named-query>
+	<named-query name="PersAttCol.findPrimaryAttributeColumn">
+		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attColValue = "primary"			
+		</query>
+	</named-query>	
+	<named-query name="PersAttCol.findAllForPersonageAndAttributeColumns">
+		<query>select pac from PersAttCol pac join fetch pac.personage join fetch pac.attributeColumns			
+		</query>
+	</named-query>	
 </entity-mappings>

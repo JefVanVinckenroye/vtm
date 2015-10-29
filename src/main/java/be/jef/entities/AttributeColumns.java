@@ -1,24 +1,25 @@
 package be.jef.entities;
 
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import be.jef.dao.PersAttCol;
+
 @Entity
-@Table(name ="attributecolumns")
+@Table(name = "attributecolumns")
 public class AttributeColumns implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private long idattributeCol;
+	@OneToMany(mappedBy = "attributeColumns")	
+	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	private String attributeColName;
-	private long persId;
 
 	public long getIdattributeCol() {
 		return idattributeCol;
@@ -28,27 +29,17 @@ public class AttributeColumns implements Serializable {
 		return attributeColName;
 	}
 
-	public long getPersId() {
-		return persId;
-	}
-	
 	@Override
-	 public boolean equals(Object obj) {
-	 if ( ! (obj instanceof AttributeColumns)) {
-	 return false;
-	 }
-	 return ((AttributeColumns) obj).attributeColName.equalsIgnoreCase(this.attributeColName);
-	 }
-	 @Override
-	 public int hashCode() {
-	 return attributeColName.toUpperCase().hashCode();
-	 }
-	 @ManyToMany
-	 @JoinTable(
-	 name = "persattcolumns",
-	 joinColumns = @JoinColumn(name = "idAttributeCol"),
-	 inverseJoinColumns = @JoinColumn(name = "persId"))
-	 private Set<Personage> personages;
-	 
+	public boolean equals(Object obj) {
+		if (!(obj instanceof AttributeColumns)) {
+			return false;
+		}
+		return ((AttributeColumns) obj).attributeColName
+				.equalsIgnoreCase(this.attributeColName);
+	}
 
+	@Override
+	public int hashCode() {
+		return attributeColName.toUpperCase().hashCode();
+	}	
 }

@@ -4,20 +4,22 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
+import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+
+import be.jef.dao.PersAttCol;
 
 @Entity
-@Table(name = "personage", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "persName"),
-		@UniqueConstraint(columnNames = "persId") })
+@Table(name = "personage")
+@NamedEntityGraphs({
+	@NamedEntityGraph(name ="Personage.metClan", attributeNodes = @NamedAttributeNode("clan"))})
 public class Personage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -32,7 +34,7 @@ public class Personage implements Serializable {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "clan")
 	private Clan clan;
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "personage")	
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	private long humanity;
 	private long willpower;
