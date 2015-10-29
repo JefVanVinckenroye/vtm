@@ -14,6 +14,9 @@ import javax.persistence.NamedEntityGraphs;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import be.jef.entities.attributes.PersAttCol;
+import be.jef.entities.attributes.PersAttribute;
+
 @Entity
 @Table(name = "personage")
 @NamedEntityGraphs({ @NamedEntityGraph(name = "Personage.metClan", attributeNodes = @NamedAttributeNode("clan")) })
@@ -33,6 +36,8 @@ public class Personage implements Serializable {
 	private Clan clan;
 	@OneToMany(mappedBy = "personage")
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
+	@OneToMany(mappedBy = "personage")
+	private Set<PersAttribute> persAttributes = new HashSet<PersAttribute>();
 	private long humanity;
 	private long willpower;
 	private static long health = 7;

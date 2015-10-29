@@ -1,4 +1,4 @@
-package be.jef.entities;
+package be.jef.entities.attributes;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -10,12 +10,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "attributecolumns")
-public class AttributeColumns implements Serializable {
+@Table(name = "attributecolumn")
+public class AttributeColumn implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private long idattributeCol;
-	@OneToMany(mappedBy = "attributeColumns")
+	@OneToMany(mappedBy = "attributeColumn")
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	private String attributeColName;
 
@@ -33,10 +33,10 @@ public class AttributeColumns implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof AttributeColumns)) {
+		if (!(obj instanceof AttributeColumn)) {
 			return false;
 		}
-		return ((AttributeColumns) obj).attributeColName
+		return ((AttributeColumn) obj).attributeColName
 				.equalsIgnoreCase(this.attributeColName);
 	}
 

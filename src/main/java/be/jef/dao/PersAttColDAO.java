@@ -2,9 +2,9 @@ package be.jef.dao;
 
 import java.util.List;
 
-import be.jef.entities.AttributeColumns;
-import be.jef.entities.PersAttCol;
 import be.jef.entities.Personage;
+import be.jef.entities.attributes.AttributeColumn;
+import be.jef.entities.attributes.PersAttCol;
 import be.jef.enums.ColValue;
 
 public class PersAttColDAO extends AbstractDAO {
@@ -18,7 +18,7 @@ public class PersAttColDAO extends AbstractDAO {
 				PersAttCol.class).getResultList();
 	}
 
-	public PersAttCol findAttColForPers(Personage personage, AttributeColumns attributeColumn) {
+	public PersAttCol findAttColForPers(Personage personage, AttributeColumn attributeColumn) {
 		return getEntityManager()
 				.createNamedQuery(
 						"PersAttCol.findAttributeColumnForPersonage",

@@ -3,9 +3,9 @@ package be.jef.services;
 import java.util.List;
 
 import be.jef.dao.PersAttColDAO;
-import be.jef.entities.AttributeColumns;
-import be.jef.entities.PersAttCol;
 import be.jef.entities.Personage;
+import be.jef.entities.attributes.AttributeColumn;
+import be.jef.entities.attributes.PersAttCol;
 
 public class PersAttColService {
 	private final PersAttColDAO persAttColDAO = new PersAttColDAO();
@@ -19,7 +19,7 @@ public class PersAttColService {
 	}
 
 	public PersAttCol findAttColForPers(Personage personage,
-			AttributeColumns attributeColumn) {
+			AttributeColumn attributeColumn) {
 		return persAttColDAO.findAttColForPers(personage, attributeColumn);
 	}
 

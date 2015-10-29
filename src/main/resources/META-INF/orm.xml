@@ -24,13 +24,13 @@
 			where c.clanName = :clanName
 		</query>
 	</named-query>
-	<named-query name="AttributeColumns.findAll">
+	<named-query name="AttributeColumn.findAll">
 		<query>
-			select ac from AttributeColumns ac order by ac.idattributeCol
+			select ac from AttributeColumn ac order by ac.idattributeCol
 		</query>
 	</named-query>
-	<named-query name="AttributeColumns.findByattributeColName">
-		<query>select ac from AttributeColumns ac
+	<named-query name="AttributeColumn.findByattributeColName">
+		<query>select ac from AttributeColumn ac
 			where ac.attributeColName = :attributeColName
 		</query>
 	</named-query>
@@ -40,7 +40,7 @@
 		</query>
 	</named-query>
 	<named-query name="PersAttCol.findAttributeColumnForPersonage">
-		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attributeColumns = :attributeColumns			
+		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attributeColumn = :attributeColumn			
 		</query>
 	</named-query>
 	<named-query name="Personage.findClan">

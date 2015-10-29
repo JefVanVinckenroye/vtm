@@ -1,4 +1,4 @@
-package be.jef.entities;
+package be.jef.entities.attributes;
 
 import java.io.Serializable;
 
@@ -13,20 +13,21 @@ import javax.persistence.NamedAttributeNode;
 import javax.persistence.NamedEntityGraph;
 import javax.persistence.Table;
 
+import be.jef.entities.Personage;
 import be.jef.enums.ColValue;
 
 @Entity
-@Table(name = "persattcolumns")
-@NamedEntityGraph(name = "PersAttCol.metPersonageEnAttributeColumns", attributeNodes = {
+@Table(name = "persattcolumn")
+@NamedEntityGraph(name = "PersAttCol.metPersonageEnAttributeColumn", attributeNodes = {
 		@NamedAttributeNode("personage"),
-		@NamedAttributeNode("attributeColumns") })
+		@NamedAttributeNode("attributeColumn") })
 public class PersAttCol implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private long persAttColId;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "idattributeCol")
-	AttributeColumns attributeColumns;
+	AttributeColumn attributeColumn;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "persId")
 	private Personage personage;
@@ -41,8 +42,8 @@ public class PersAttCol implements Serializable {
 		return attColValue;
 	}
 
-	public AttributeColumns getAttributeColumns() {
-		return attributeColumns;
+	public AttributeColumn getAttributeColumn() {
+		return attributeColumn;
 	}
 
 	public Personage getPersonage() {

@@ -42,7 +42,7 @@
 				<td>${personage.concept }</td>
 				<td>${personage.clan.clanName}</td>
 				<c:forEach var='persAttCol' items='${persAttCols}'>
-				<td>${persAttCol.attColValue}</td>
+				<td>${persAttCol.attColValue}</td>				
 				</c:forEach>				
 			</tr>
 		</table>

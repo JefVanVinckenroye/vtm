@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import be.jef.entities.AttributeColumns;
 import be.jef.entities.Clan;
-import be.jef.entities.PersAttCol;
 import be.jef.entities.Personage;
-import be.jef.enums.ColValue;
-import be.jef.services.AttributeColumnsService;
+import be.jef.entities.attributes.AttributeColumn;
+import be.jef.entities.attributes.PersAttCol;
+import be.jef.services.AttributeColumnService;
 import be.jef.services.ClanService;
 import be.jef.services.PersAttColService;
 import be.jef.services.PersonageService;
@@ -28,7 +27,7 @@ public class LoadServlet extends HttpServlet {
 	private final transient PersonageService personageService = new PersonageService();
 	private final transient ClanService clanService = new ClanService();
 	private final transient PersAttColService persAttColService = new PersAttColService();
-	private final transient AttributeColumnsService attributeColumnsService = new AttributeColumnsService();
+	private final transient AttributeColumnService attributeColumnService = new AttributeColumnService();
 	
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -41,10 +40,10 @@ public class LoadServlet extends HttpServlet {
 			request.setAttribute("personage", personage);
 			Clan clan = personage.getClan();
 			request.setAttribute("clan", clan);
-			List<AttributeColumns> attributeColumnList = attributeColumnsService.findAll();
-			request.setAttribute("attributeColumns", attributeColumnList);
+			List<AttributeColumn> attributeColumns = attributeColumnService.findAll();
+			request.setAttribute("attributeColumns", attributeColumns);
 			List<PersAttCol> persAttCols = new ArrayList<>();
-			for(AttributeColumns attributeColumn : attributeColumnList){
+			for(AttributeColumn attributeColumn : attributeColumns){
 			persAttCols.add(persAttColService.findAttColForPers(personage, attributeColumn));
 			}
 			request.setAttribute("persAttCols", persAttCols);
