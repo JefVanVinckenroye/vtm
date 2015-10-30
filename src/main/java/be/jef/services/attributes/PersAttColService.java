@@ -1,8 +1,8 @@
-package be.jef.services;
+package be.jef.services.attributes;
 
 import java.util.List;
 
-import be.jef.dao.PersAttColDAO;
+import be.jef.dao.attributes.PersAttColDAO;
 import be.jef.entities.Personage;
 import be.jef.entities.attributes.AttributeColumn;
 import be.jef.entities.attributes.PersAttCol;

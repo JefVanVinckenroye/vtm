@@ -1,8 +1,8 @@
-package be.jef.services;
+package be.jef.services.attributes;
 
 import java.util.List;
 
-import be.jef.dao.AttributeColumnDAO;
+import be.jef.dao.attributes.AttributeColumnDAO;
 import be.jef.entities.attributes.AttributeColumn;
 
 public class AttributeColumnService {

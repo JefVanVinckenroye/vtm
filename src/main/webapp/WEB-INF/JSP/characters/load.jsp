@@ -9,43 +9,80 @@
 </head>
 <body>
 	<v:menu />
-	<h1>Load Character</h1>
-	<nav>
-		<c:forEach var='personage' items='${personages}'>
-			<c:url value='/characters/load.htm' var='loadURL'>
-				<c:param name='persId' value="${personage.persId}" />
-			</c:url>
-			<a
-				href="<c:url value='/characters/load.htm?persId=${personage.persId}'/>">${personage.persName}</a>
-		</c:forEach>
-	</nav>
-	<c:if test='${not empty personage}'>
-		<table>
-			<tr>
-				<th>Character Name</th>
-				<th>Player Name</th>
-				<th>Chronicle</th>
-				<th>Nature</th>
-				<th>Demeanor</th>
-				<th>Concept</th>
-				<th>Clan</th>
-				<c:forEach var='attributeColumn' items='${attributeColumns}'>
-					<th>${attributeColumn.attributeColName}</th>
+	<c:choose>
+		<c:when test='${not empty personage}'>
+			<h1>${personage.persName}</h1>
+			<table>
+				<tr>
+					<th class="title">Character Name:</th>
+					<td>${personage.persName}</td>
+					<th class="title">Nature:</th>
+					<td>${personage.nature}</td>
+					<th class="title">Clan:</th>
+					<td>${personage.clan.clanName}</td>
+				</tr>
+				<tr>
+					<th class="title">Player Name:</th>
+					<td>${personage.playerName}</td>
+					<th class="title">Demeanor:</th>
+					<td>${personage.demeanor}</td>
+					<th class="title">Sire:</th>
+					<td>${personage.sire }</td>
+				</tr>
+				<tr>
+					<th class="title">Chronicle:</th>
+					<td>${personage.chronicle}</td>
+					<th class="title">Concept:</th>
+					<td>${personage.concept }</td>
+					<th class="title">Generation:</th>
+					<td>13</td>
+				</tr>
+				<tr>
+					<td colspan="6" />
+				</tr>
+				<tr>
+					<th class="heading" colspan="6">Attributes</th>
+				</tr>
+				<tr>
+					<c:forEach var='attributeColumn' items='${attributeColumns}'>
+						<td colspan="2">
+							<table class="subtable">
+								<tr>
+									<th class="subheading" colspan="2">${attributeColumn.attributeColName}</th>
+								</tr>
+								<tr>
+									<c:forEach var='persAttCol' items='${persAttCols}'>
+										<c:if test='${persAttCol.attributeColumn == attributeColumn }'>
+											<td colspan="2">${persAttCol.attColValue}</td>
+										</c:if>
+									</c:forEach>
+								</tr>
+								<c:forEach var='attribute' items='${attributes}'>
+									<c:if test='${attribute.attributeColumn == attributeColumn}'>
+										<tr>
+											<td>${attribute.attributeName}</td>
+											<td></td>
+										</tr>
+									</c:if>
+								</c:forEach>
+							</table>
+						</td>
+					</c:forEach>
+				</tr>
+			</table>
+		</c:when>
+		<c:otherwise>
+			<h1>Load Character</h1>
+			<nav>
+				<c:forEach var='personage' items='${personages}'>
+					<c:url value='/characters/load.htm' var='loadURL'>
+						<c:param name='persId' value="${personage.persId}" />
+					</c:url>
+					<a
+						href="<c:url value='/characters/load.htm?persId=${personage.persId}'/>">${personage.persName}</a>
 				</c:forEach>
-			</tr>
-			<tr>
-				<td>${personage.persName}</td>
-				<td>${personage.playerName}</td>
-				<td>${personage.chronicle}</td>
-				<td>${personage.nature}</td>
-				<td>${personage.demeanor}</td>
-				<td>${personage.concept }</td>
-				<td>${personage.clan.clanName}</td>
-				<c:forEach var='persAttCol' items='${persAttCols}'>
-				<td>${persAttCol.attColValue}</td>				
-				</c:forEach>				
-			</tr>
-		</table>
-	</c:if>
+			</nav>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

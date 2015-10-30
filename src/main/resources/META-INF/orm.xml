@@ -43,8 +43,20 @@
 		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attributeColumn = :attributeColumn			
 		</query>
 	</named-query>
+	<named-query name="PersAttribute.findAll">
+		<query>
+			select pa from PersAttribute pa order by pa.persAttId
+		</query>
+	</named-query>
 	<named-query name="Personage.findClan">
 		<query>select p.clan from Personage p</query>
 	</named-query>
-
+	<named-query name="Attribute.findAll">
+		<query>
+			select a from Attribute a order by a.idAttribute
+		</query>
+	</named-query>
+	<named-query name="Attribute.findAttributesForColumn">
+		<query>select a from Attribute a where a.attributeColumn = :attributeColumn</query>
+	</named-query>
 </entity-mappings>

@@ -17,6 +17,8 @@ public class AttributeColumn implements Serializable {
 	private long idattributeCol;
 	@OneToMany(mappedBy = "attributeColumn")
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
+	@OneToMany(mappedBy = "attributeColumn")
+	private Set<Attribute> attributes = new HashSet<Attribute>();
 	private String attributeColName;
 
 	public long getIdattributeCol() {
