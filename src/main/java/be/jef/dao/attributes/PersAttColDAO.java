@@ -19,17 +19,16 @@ public class PersAttColDAO extends AbstractDAO {
 				PersAttCol.class).getResultList();
 	}
 
-	public PersAttCol findAttColForPers(Personage personage, AttributeColumn attributeColumn) {
+	public List<PersAttCol> findAttColForPers(Personage personage) {
 		return getEntityManager()
 				.createNamedQuery(
 						"PersAttCol.findAttributeColumnForPersonage",
 						PersAttCol.class)
-				.setParameter("personage", personage)
-				.setParameter("attributeColumn", attributeColumn)
+				.setParameter("personage", personage)				
 				.setHint(
 						"javax.persistence.loadgraph",
 						getEntityManager().createEntityGraph(
 								"PersAttCol.metPersonageEnAttributeColumns"))
-				.getSingleResult();
+				.getResultList();
 	}
 }

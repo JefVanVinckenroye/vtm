@@ -18,9 +18,8 @@ public class PersAttColService {
 		return persAttColDAO.findAll();
 	}
 
-	public PersAttCol findAttColForPers(Personage personage,
-			AttributeColumn attributeColumn) {
-		return persAttColDAO.findAttColForPers(personage, attributeColumn);
+	public List<PersAttCol> findAttColForPers(Personage personage) {
+		return persAttColDAO.findAttColForPers(personage);
 	}
 
 }

@@ -98,5 +98,5 @@ public class Personage implements Serializable {
 	public Set<PersAttCol> getPersAttCols() {
 		return persAttCols;
 	}
-
+	
 }

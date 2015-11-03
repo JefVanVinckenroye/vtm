@@ -15,8 +15,10 @@ import be.jef.entities.Personage;
 
 @Entity
 @Table(name = "persattribute")
-@NamedEntityGraph(name = "PersAttribute.metPersonageEnAttribute", attributeNodes = {
-		@NamedAttributeNode("personage"), @NamedAttributeNode("attribute") })
+@NamedEntityGraph(name = "PersAttribute.metPersonageEnAttributeEnAttributeColumn", attributeNodes = {
+		@NamedAttributeNode("personage"),
+		@NamedAttributeNode("attribute"),
+		@NamedAttributeNode("attributeColumn")})
 public class PersAttribute implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -24,10 +26,17 @@ public class PersAttribute implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "idattribute")
 	AttributeColumn attribute;
+	public AttributeColumn getAttributeColumn() {
+		return attributeColumn;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "persId")
 	private Personage personage;
-	private int level;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "idattributeCol")
+	AttributeColumn attributeColumn;
+	private long level;
 
 	public long getPersAttId() {
 		return persAttId;
@@ -41,7 +50,7 @@ public class PersAttribute implements Serializable {
 		return personage;
 	}
 
-	public int getLevel() {
+	public long getLevel() {
 		return level;
 	}
 

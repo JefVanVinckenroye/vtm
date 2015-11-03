@@ -1,8 +1,9 @@
 package be.jef.servlets.characters;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,11 +16,13 @@ import be.jef.entities.Personage;
 import be.jef.entities.attributes.Attribute;
 import be.jef.entities.attributes.AttributeColumn;
 import be.jef.entities.attributes.PersAttCol;
+import be.jef.entities.attributes.PersAttribute;
 import be.jef.services.ClanService;
 import be.jef.services.PersonageService;
 import be.jef.services.attributes.AttributeColumnService;
 import be.jef.services.attributes.AttributeService;
 import be.jef.services.attributes.PersAttColService;
+import be.jef.services.attributes.PersAttributeService;
 
 @WebServlet("/characters/load.htm")
 public class LoadServlet extends HttpServlet {
@@ -30,6 +33,7 @@ public class LoadServlet extends HttpServlet {
 	private final transient PersAttColService persAttColService = new PersAttColService();
 	private final transient AttributeColumnService attributeColumnService = new AttributeColumnService();
 	private final transient AttributeService attributeService = new AttributeService();
+	private final transient PersAttributeService persAttributeService = new PersAttributeService();
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -45,12 +49,18 @@ public class LoadServlet extends HttpServlet {
 			List<AttributeColumn> attributeColumns = attributeColumnService
 					.findAll();
 			request.setAttribute("attributeColumns", attributeColumns);
-			List<PersAttCol> persAttCols = new ArrayList<>();
-			for (AttributeColumn attributeColumn : attributeColumns) {
-				persAttCols.add(persAttColService.findAttColForPers(personage,
-						attributeColumn));
-			}
+			//Map<Attribute, Long> persAttributesByAttribute = new HashMap<Attribute, Long>();
+			List<PersAttCol> persAttCols = persAttColService.findAll();
 			List<Attribute> attributes = attributeService.findAll();
+
+			/*for (Attribute attribute : attributes) {
+				persAttributesByAttribute.put(attribute, persAttributeService
+						.findPersAttributeForPersonageAndAttribute(personage,
+								attribute).getLevel());
+			}
+			request.setAttribute("persAttributesByAttribute",
+					persAttributesByAttribute);*/
+
 			request.setAttribute("attributes", attributes);
 			request.setAttribute("persAttCols", persAttCols);
 		}

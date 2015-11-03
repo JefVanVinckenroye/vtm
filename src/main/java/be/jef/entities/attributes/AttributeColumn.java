@@ -19,6 +19,17 @@ public class AttributeColumn implements Serializable {
 	private Set<PersAttCol> persAttCols = new HashSet<PersAttCol>();
 	@OneToMany(mappedBy = "attributeColumn")
 	private Set<Attribute> attributes = new HashSet<Attribute>();
+	@OneToMany(mappedBy = "attributeColumn")
+	private Set<PersAttribute> persAttributes = new HashSet<PersAttribute>();
+
+	public Set<Attribute> getAttributes() {
+		return attributes;
+	}
+
+	public Set<PersAttribute> getPersAttributes() {
+		return persAttributes;
+	}
+
 	private String attributeColName;
 
 	public long getIdattributeCol() {
@@ -46,4 +57,5 @@ public class AttributeColumn implements Serializable {
 	public int hashCode() {
 		return attributeColName.toUpperCase().hashCode();
 	}
+	
 }

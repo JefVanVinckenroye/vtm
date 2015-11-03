@@ -40,7 +40,7 @@
 		</query>
 	</named-query>
 	<named-query name="PersAttCol.findAttributeColumnForPersonage">
-		<query>select pac from PersAttCol pac where pac.personage = :personage and pac.attributeColumn = :attributeColumn			
+		<query>select pac from PersAttCol pac where pac.personage = :personage			
 		</query>
 	</named-query>
 	<named-query name="PersAttribute.findAll">
@@ -48,6 +48,11 @@
 			select pa from PersAttribute pa order by pa.persAttId
 		</query>
 	</named-query>
+	<named-query name="PersAttribute.findPersAttributeForPersonageAndAttribute">
+		<query>
+			select pa from PersAttribute pa where pa.personage = :personage and pa.attribute = :attribute
+		</query>
+	</named-query>	
 	<named-query name="Personage.findClan">
 		<query>select p.clan from Personage p</query>
 	</named-query>

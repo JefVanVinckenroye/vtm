@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import be.jef.entities.attributes.PersAttribute;
+
 @Entity
 @Table(name = "clan")
 public class Clan implements Serializable {

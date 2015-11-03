@@ -33,12 +33,30 @@ public class Attribute implements Serializable {
 		return idAttribute;
 	}
 
+	public Set<PersAttribute> getPersAttributes() {
+		return persAttributes;
+	}
+
 	public String getAttributeName() {
 		return attributeName;
 	}
 
 	public AttributeColumn getAttributeColumn() {
 		return attributeColumn;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Attribute)) {
+			return false;
+		}
+		return ((Attribute) obj).attributeName
+				.equalsIgnoreCase(this.attributeName);
+	}
+
+	@Override
+	public int hashCode() {
+		return attributeName.toUpperCase().hashCode();
 	}
 
 }
