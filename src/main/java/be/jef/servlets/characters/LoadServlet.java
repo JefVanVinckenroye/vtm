@@ -49,17 +49,17 @@ public class LoadServlet extends HttpServlet {
 			List<AttributeColumn> attributeColumns = attributeColumnService
 					.findAll();
 			request.setAttribute("attributeColumns", attributeColumns);
-			//Map<Attribute, Long> persAttributesByAttribute = new HashMap<Attribute, Long>();
+			Map<Attribute, String> persAttributesByAttribute = new HashMap<Attribute, String>();
 			List<PersAttCol> persAttCols = persAttColService.findAll();
 			List<Attribute> attributes = attributeService.findAll();
 
-			/*for (Attribute attribute : attributes) {
-				persAttributesByAttribute.put(attribute, persAttributeService
+			for (Attribute attribute : attributes) {
+				persAttributesByAttribute.put(attribute, Long.toString(persAttributeService
 						.findPersAttributeForPersonageAndAttribute(personage,
-								attribute).getLevel());
+								attribute).getLevel()));
 			}
 			request.setAttribute("persAttributesByAttribute",
-					persAttributesByAttribute);*/
+					persAttributesByAttribute);
 
 			request.setAttribute("attributes", attributes);
 			request.setAttribute("persAttCols", persAttCols);

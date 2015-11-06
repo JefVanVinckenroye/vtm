@@ -16,20 +16,15 @@ import be.jef.entities.Personage;
 @Entity
 @Table(name = "persattribute")
 @NamedEntityGraph(name = "PersAttribute.metPersonageEnAttributeEnAttributeColumn", attributeNodes = {
-		@NamedAttributeNode("personage"),
-		@NamedAttributeNode("attribute"),
-		@NamedAttributeNode("attributeColumn")})
+		@NamedAttributeNode("personage"), @NamedAttributeNode("attribute"),
+		@NamedAttributeNode("attributeColumn") })
 public class PersAttribute implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private long persAttId;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "idattribute")
-	AttributeColumn attribute;
-	public AttributeColumn getAttributeColumn() {
-		return attributeColumn;
-	}
-
+	Attribute attribute;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "persId")
 	private Personage personage;
@@ -38,11 +33,15 @@ public class PersAttribute implements Serializable {
 	AttributeColumn attributeColumn;
 	private long level;
 
+	public AttributeColumn getAttributeColumn() {
+		return attributeColumn;
+	}
+
 	public long getPersAttId() {
 		return persAttId;
 	}
 
-	public AttributeColumn getAttribute() {
+	public Attribute getAttribute() {
 		return attribute;
 	}
 

@@ -60,8 +60,9 @@
 								<c:forEach var='attribute' items='${attributes}'>
 									<c:if test='${attribute.attributeColumn == attributeColumn}'>
 										<tr>
-											<td>${attribute.attributeName}</td><td></td>
-<%-- 											<td>${persAttributesByAttribute["${attribute}"]}</td>											 --%>
+											<td>${attribute.attributeName}</td>
+											<td>${persAttributesByAttribute['${attribute}']}
+											</td>
 										</tr>
 									</c:if>
 								</c:forEach>
