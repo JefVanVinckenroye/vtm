@@ -6,13 +6,20 @@
 	<persistence-unit name='vtm'>
 		<non-jta-data-source>
  			java:/comp/env/jdbc/vtm
-		</non-jta-data-source>
+		</non-jta-data-source>		
 		<class>be.jef.entities.Clan</class>
 		<class>be.jef.entities.Personage</class>
+		
+<!-- 		Entity classes voor Attributes -->
 		<class>be.jef.entities.attributes.AttributeColumn</class>
 		<class>be.jef.entities.attributes.PersAttCol</class>
 		<class>be.jef.entities.attributes.Attribute</class>
 		<class>be.jef.entities.attributes.PersAttribute</class>
+<!-- 		Entity classes voor Abilities -->
+		<class>be.jef.entities.abilities.PersAbilCol</class>
+		<class>be.jef.entities.abilities.AbilityColumn</class>
+		<class>be.jef.entities.abilities.PersAbility</class>
+		<class>be.jef.entities.abilities.Ability</class>
 		<properties>
 			<property name='hibernate.show_sql' value='true' />
 			<property name='hibernate.format_sql' value='true' />

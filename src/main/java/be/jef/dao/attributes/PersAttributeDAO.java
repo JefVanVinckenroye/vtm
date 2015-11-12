@@ -33,4 +33,19 @@ public class PersAttributeDAO extends AbstractDAO {
 										"PersAttribute.metPersonageEnAttributeEnAttributeColumn"))
 				.getSingleResult();
 	}
+	
+	public List<PersAttribute> findPersAttributeForPersonage(
+			Personage personage) {
+		return getEntityManager()
+				.createNamedQuery(
+						"PersAttribute.findPersAttributeForPersonage",
+						PersAttribute.class)
+				.setParameter("personage", personage)				
+				.setHint(
+						"javax.persistence.loadgraph",
+						getEntityManager()
+								.createEntityGraph(
+										"PersAttribute.metPersonageEnAttributeEnAttributeColumn"))
+				.getResultList();
+	}
 }

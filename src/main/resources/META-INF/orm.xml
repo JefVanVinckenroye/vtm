@@ -50,7 +50,12 @@
 	</named-query>
 	<named-query name="PersAttribute.findPersAttributeForPersonageAndAttribute">
 		<query>
-			select pa from PersAttribute pa where pa.personage = :personage and pa.attribute = :attribute
+			select pa from PersAttribute pa where pa.personage = :personage and pa.attribute = :attribute order by pa.attribute
+		</query>
+	</named-query>
+	<named-query name="PersAttribute.findPersAttributeForPersonage">
+		<query>
+			select pa from PersAttribute pa where pa.personage = :personage order by pa.persAttId
 		</query>
 	</named-query>	
 	<named-query name="Personage.findClan">

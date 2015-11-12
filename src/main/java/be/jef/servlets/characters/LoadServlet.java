@@ -1,6 +1,7 @@
 package be.jef.servlets.characters;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,18 +50,19 @@ public class LoadServlet extends HttpServlet {
 			List<AttributeColumn> attributeColumns = attributeColumnService
 					.findAll();
 			request.setAttribute("attributeColumns", attributeColumns);
-			Map<Attribute, String> persAttributesByAttribute = new HashMap<Attribute, String>();
+			Map<Attribute, Long> persAttributesByAttribute = new HashMap<Attribute, Long>();
+			//List<PersAttribute> persAttributes = persAttributeService.findPersAttributeForPersonage(personage);
 			List<PersAttCol> persAttCols = persAttColService.findAll();
 			List<Attribute> attributes = attributeService.findAll();
 
 			for (Attribute attribute : attributes) {
-				persAttributesByAttribute.put(attribute, Long.toString(persAttributeService
+				persAttributesByAttribute.put(attribute,persAttributeService
 						.findPersAttributeForPersonageAndAttribute(personage,
-								attribute).getLevel()));
+								attribute));
 			}
 			request.setAttribute("persAttributesByAttribute",
 					persAttributesByAttribute);
-
+			//request.setAttribute("persAttributes", persAttributes);
 			request.setAttribute("attributes", attributes);
 			request.setAttribute("persAttCols", persAttCols);
 		}

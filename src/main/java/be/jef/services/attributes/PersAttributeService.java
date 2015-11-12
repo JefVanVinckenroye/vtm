@@ -18,9 +18,13 @@ public class PersAttributeService {
 		return persAttributeDAO.findAll();
 	}
 
-	public PersAttribute findPersAttributeForPersonageAndAttribute(Personage personage, Attribute attribute) {
+	public long findPersAttributeForPersonageAndAttribute(Personage personage, Attribute attribute) {
 		return persAttributeDAO
-				.findPersAttributeForPersonageAndAttribute(personage, attribute);
+				.findPersAttributeForPersonageAndAttribute(personage, attribute).getLevel();
+	}
+	public List<PersAttribute> findPersAttributeForPersonage(Personage personage) {
+		return persAttributeDAO
+				.findPersAttributeForPersonage(personage);
 	}
 
 }

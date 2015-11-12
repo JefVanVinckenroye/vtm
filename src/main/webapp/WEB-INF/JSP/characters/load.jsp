@@ -57,11 +57,41 @@
 										</c:if>
 									</c:forEach>
 								</tr>
-								<c:forEach var='attribute' items='${attributes}'>
-									<c:if test='${attribute.attributeColumn == attributeColumn}'>
+								<c:forEach var='entry' items='${persAttributesByAttribute}'>
+									<c:if test='${entry.key.attributeColumn == attributeColumn}'>
 										<tr>
-											<td>${attribute.attributeName}</td>
-											<td>${persAttributesByAttribute['${attribute}']}
+											<td>${entry.key.attributeName}</td>
+											<td>${entry.value}
+											</td>
+										</tr>
+									</c:if>
+								</c:forEach>
+							</table>
+						</td>
+					</c:forEach>
+				</tr>
+				<tr>
+					<th class="heading" colspan="6">Abilities</th>
+				</tr>
+				<tr>
+					<c:forEach var='abilityColumn' items='${abilityColumns}'>
+						<td colspan="2">
+							<table class="subtable">
+								<tr>
+									<th class="subheading" colspan="2">${abilityColumn.abilityColName}</th>
+								</tr>
+								<tr>
+									<c:forEach var='persAttCol' items='${persAttCols}'>
+										<c:if test='${persAttCol.attributeColumn == attributeColumn }'>
+											<td colspan="2">${persAttCol.attColValue}</td>
+										</c:if>
+									</c:forEach>
+								</tr>
+								<c:forEach var='entry' items='${persAttributesByAttribute}'>
+									<c:if test='${entry.key.attributeColumn == attributeColumn}'>
+										<tr>
+											<td>${entry.key.attributeName}</td>
+											<td>${entry.value}
 											</td>
 										</tr>
 									</c:if>
